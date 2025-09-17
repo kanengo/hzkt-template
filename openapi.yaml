@@ -1,0 +1,42 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: UserExt API
+    version: 0.0.1
+paths:
+    /user/getUserInfo:
+        post:
+            tags:
+                - UserExt
+            operationId: UserExt_GetUserInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/user.v1.GetUserInfoReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/user.v1.GetUserInfoRes'
+components:
+    schemas:
+        user.v1.GetUserInfoReq:
+            required:
+                - user_id
+            type: object
+            properties:
+                user_id:
+                    type: string
+        user.v1.GetUserInfoRes:
+            type: object
+            properties:
+                name:
+                    type: string
+tags:
+    - name: UserExt

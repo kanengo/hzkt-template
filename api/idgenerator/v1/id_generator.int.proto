@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package idgenerator.v1;
+
+// import "google/api/annotations.proto";
+
+option go_package = "solabar-server/api/idgenerator/v1;v1";
+option java_multiple_files = true;
+option java_package = "dev.kratos.api.idgenerator.v1";
+option java_outer_classname = "IdgeneratorProtoV1";
+
+enum BizType {
+    UNKNOWN = 0;
+    CHARACTER_ID = 1;
+}
+
+service IdGeneratorInt {
+    rpc GenerateId (GenerateIdRequest) returns (GenerateIdResponse) {
+    }
+}
+
+
+message GenerateIdRequest {
+  int32 biz_type = 1;
+}
+
+message GenerateIdResponse {
+    oneof id {
+        int64 int_id = 1;
+        string str_id = 2;
+    }
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package user.v1;
+
+import "google/api/field_behavior.proto";
+import "google/api/annotations.proto";
+import "hz/api.proto";
+
+option go_package = "solabar-server/api/user/v1;v1";
+option java_multiple_files = true;
+option java_package = "dev.kratos.api.user.v1";
+option java_outer_classname = "UserProtoV1";
+
+service UserExt {
+    rpc GetUserInfo (GetUserInfoReq) returns (GetUserInfoRes) {
+        option (google.api.http) = {
+            post: "/user/getUserInfo"
+            body:"*"
+        };
+    }
+}
+
+message GetUserInfoReq {
+    int64 user_id = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message GetUserInfoRes {
+    string name = 1;
+}
